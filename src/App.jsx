@@ -161,7 +161,7 @@ function Hero() {
         </div>
 
         <div className="hero-image">
-          <img src="/src/assets/carro-premium.png" alt="Carro premium" />
+          <img src="/assets/carro-premium.png" alt="Carro premium" />
         </div>
       </div>
     </section>
