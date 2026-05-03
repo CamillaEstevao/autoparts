@@ -151,7 +151,7 @@ function Hero() {
 
           <div className="hero-benefits">
             <div><Truck /> Envio para todo o Brasil</div>
-            <div><ShieldCheck /> Peças novas com garantia</div>
+            <div><ShieldCheck /> Peças usadas com garantia</div>
             <div><Headphones /> Atendimento especializado</div>
           </div>
 
