@@ -142,7 +142,7 @@ function Hero() {
         <div className="hero-content">
           <span className="eyebrow">Peças premium para seu carro</span>
           <h1>
-            Peças de qualidade para quem entende do <em>assunto.</em>
+            Qualidade para quem entende do <em>assunto.</em>
           </h1>
           <p>
             A melhor vitrine online de autopeças para seu cliente consultar,
