@@ -207,7 +207,7 @@
 .hero-image {
   position: relative;
   z-index: 2;
-  height: 620px;
+  height: 560px;
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
