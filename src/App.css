@@ -130,7 +130,7 @@
 }
 
 .hero-grid {
-  min-height: 680px;
+  min-height: 620px;
   display: grid;
   grid-template-columns: 520px 1fr;
   align-items: center;
@@ -207,7 +207,7 @@
 .hero-image {
   position: relative;
   z-index: 2;
-  height: 680px;
+  height: 620px;
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
@@ -463,6 +463,8 @@
   .hero-benefits {
     grid-template-columns: 1fr;
     max-width: 100%;
+    margin-bottom: 0;
+    padding-bottom: 40px;
   }
 
   .hero-image {
