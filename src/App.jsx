@@ -41,31 +41,31 @@ const products = [
   {
     name: "Farol Gol G5 2009 a 2012",
     price: "R$ 189,90",
-    image: "/src/assets/farol.svg",
+    image: "/assets/farol.svg",
     compatible: "Gol, Voyage e Saveiro G5",
   },
   {
     name: "Disco de Freio Ventilado",
     price: "R$ 129,90",
-    image: "/src/assets/disco-freio.svg",
+    image: "assets/disco-freio.svg",
     compatible: "Linha Volkswagen e Fiat",
   },
   {
     name: "Amortecedor Dianteiro",
     price: "R$ 219,90",
-    image: "/src/assets/amortecedor.svg",
+    image: "/assets/amortecedor.svg",
     compatible: "Modelos nacionais",
   },
   {
     name: "Lanterna Traseira Gol G6",
     price: "R$ 159,90",
-    image: "/src/assets/lanterna.svg",
+    image: "/assets/lanterna.svg",
     compatible: "Gol G6 2013 a 2016",
   },
   {
     name: "Filtro de Ar Motor",
     price: "R$ 39,90",
-    image: "/src/assets/filtro-ar.svg",
+    image: "/assets/filtro-ar.svg",
     compatible: "Diversos modelos",
   }
 ];
@@ -241,12 +241,12 @@ function FeaturedProduct() {
         <div className="detail-gallery">
           <span className="breadcrumb">Home &gt; Iluminação &gt; Faróis</span>
           <div className="main-product-image">
-            <img src="/src/assets/farol.svg" alt="Farol Gol G5" />
+            <img src="/assets/farol.svg" alt="Farol Gol G5" />
           </div>
           <div className="thumbs">
-            <img src="/src/assets/farol.svg" alt="Farol miniatura" />
-            <img src="/src/assets/carro-mini.svg" alt="Carro miniatura" />
-            <img src="/src/assets/lanterna.svg" alt="Lanterna miniatura" />
+            <img src="/assets/farol.svg" alt="Farol miniatura" />
+            <img src="/assets/carro-mini.svg" alt="Carro miniatura" />
+            <img src="/assets/lanterna.svg" alt="Lanterna miniatura" />
           </div>
         </div>
 
@@ -298,7 +298,7 @@ function PromoBanner() {
           <p>As melhores marcas e peças para garantir segurança e desempenho para seu veículo.</p>
           <a className="btn btn-primary" href="#categorias">Ver categorias</a>
         </div>
-        <img src="/src/assets/pecas-banner.svg" alt="Peças automotivas" />
+        <img src="/assets/pecas-banner.svg" alt="Peças automotivas" />
       </div>
     </section>
   );
@@ -334,7 +334,7 @@ function About() {
           </p>
           <a className="btn btn-dark" href="#contato">Saiba mais</a>
         </div>
-        <img src="/src/assets/oficina-premium.svg" alt="Oficina premium" />
+        <img src="/assets/oficina-premium.svg" alt="Oficina premium" />
       </div>
     </section>
   );
