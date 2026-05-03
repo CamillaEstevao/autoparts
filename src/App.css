@@ -209,7 +209,6 @@
   z-index: 2;
   height: 560px;
   display: flex;
-  align-items: flex-start;
   justify-content: flex-end;
 }
 
@@ -217,7 +216,7 @@
   height: auto;
   object-fit: cover;
   object-position: center top;
-  transform: translateY(-60px); /* 👈 sobe o carro */
+  transform: translateY(-128px); /* 👈 sobe o carro */
 }
 
 .hero-image::before {
