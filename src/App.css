@@ -214,10 +214,10 @@
 }
 
 .hero-image img {
-  height: 100%;
+  height: auto;
   object-fit: cover;
   object-position: center top;
-  object-position: center 20%;
+  transform: translateY(-60px); /* 👈 sobe o carro */
 }
 
 .hero-image::before {
