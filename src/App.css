@@ -219,6 +219,7 @@
   height: 100%;
   width: auto;
   object-fit: contain;
+  transform: scale(1.4) translateY(-60px);
 }
 
 .hero-image::before {
