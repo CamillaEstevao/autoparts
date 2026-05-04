@@ -126,7 +126,9 @@
     radial-gradient(circle at 72% 45%, rgba(245,189,24,.12), transparent 28%),
     linear-gradient(90deg, #000 0%, #000 48%, #050505 100%);
   color: white;
+  position: relative;
   overflow: hidden;
+  margin-right: -120px; /* puxa para direita */
 }
 
 .hero-grid {
@@ -205,19 +207,18 @@
 }
 
 .hero-image {
-  position: relative;
-  z-index: 2;
-  height: 560px;
-  width: 83%;
+  position: relative; /* não absoluto */
+  height: 620px;
   display: flex;
+  align-items: flex-end;
   justify-content: flex-end;
+  margin-right: -60px;
 }
 
 .hero-image img {
-  height: auto;
-  object-fit: cover;
-  object-position: center top;
-  transform: translateY(-128px); /* 👈 sobe o carro */
+  height: 100%;
+  width: auto;
+  object-fit: contain;
 }
 
 .hero-image::before {
@@ -467,11 +468,7 @@
     padding-bottom: 40px;
   }
 
-  .hero-image {
-    height: 420px;
-  }
-
-  .hero-image::before {
+    .hero-image::before {
     background: linear-gradient(
       180deg,
       #000 0%,
@@ -501,10 +498,6 @@
 
   .hero p {
     font-size: 15px;
-  }
-
-  .hero-image {
-    height: 300px;
   }
 
   .category-grid,
