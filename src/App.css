@@ -1032,6 +1032,176 @@
   transform: scale(1.08) translateY(-3px);
 }
 
+/* ================= EFEITO BMW / AUDI ================= */
+
+/* entrada geral */
+.hero-content {
+  animation: heroTextIn .9s ease forwards;
+}
+
+.hero-visual {
+  animation: heroCarIn 1.1s ease forwards;
+}
+
+/* brilho no performance */
+.hero h1 em {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.hero h1 em::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -130%;
+  width: 120%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255,255,255,.65) 45%,
+    transparent 75%
+  );
+  transform: skewX(-20deg);
+  animation: shineText 4.5s ease-in-out infinite;
+}
+
+/* carro respirando */
+.hero-visual img {
+  animation: carBreath 6s ease-in-out infinite;
+}
+
+/* glow amarelo premium */
+.hero::after {
+  content: "";
+  position: absolute;
+  right: 18%;
+  bottom: 8%;
+  width: 460px;
+  height: 460px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(245,189,24,.18),
+    rgba(245,189,24,.07) 35%,
+    transparent 70%
+  );
+  filter: blur(70px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* cards flutuando */
+.hero-card {
+  animation: floatCard 4.5s ease-in-out infinite;
+}
+
+.hero-card.two {
+  animation-delay: .8s;
+}
+
+/* botão com vida */
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 80%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,.55),
+    transparent
+  );
+  transform: skewX(-20deg);
+  animation: buttonShine 3.8s ease-in-out infinite;
+}
+
+/* animações */
+@keyframes heroTextIn {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroCarIn {
+  from {
+    opacity: 0;
+    transform: translateX(70px) scale(.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes shineText {
+  0%, 45% {
+    left: -130%;
+  }
+
+  70%, 100% {
+    left: 140%;
+  }
+}
+
+@keyframes carBreath {
+  0%, 100% {
+    transform: scale(1.13) translateX(8px) translateY(-10px);
+  }
+
+  50% {
+    transform: scale(1.16) translateX(4px) translateY(-14px);
+  }
+}
+
+@keyframes floatCard {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes buttonShine {
+  0%, 55% {
+    left: -120%;
+  }
+
+  80%, 100% {
+    left: 140%;
+  }
+}
+
+/* reduz animações no mobile para não pesar */
+@media (max-width: 768px) {
+  .hero-visual img {
+    animation: none;
+  }
+
+  .hero::after {
+    width: 280px;
+    height: 280px;
+    right: 5%;
+    bottom: 18%;
+  }
+}
 
 /* ================= RESPONSIVO ================= */
 
