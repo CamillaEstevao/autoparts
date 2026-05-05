@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import {
   Search,
   ShoppingCart,
@@ -27,8 +28,6 @@ import {
 } from "lucide-react";
 
 import "./App.css";
-
-import { useEffect } from "react";
 
 const whatsappNumber = "5511999999999";
 
@@ -149,29 +148,45 @@ function Header() {
 }
 
 function Hero() {
-  useEffect(() => {
-    const hero = document.querySelector(".hero-visual img");
+ useEffect(() => {
+    const hero = document.querySelector(".hero");
+    const car = document.querySelector(".hero-visual img");
+
+    if (!hero || !car) return;
 
     const handleMove = (e) => {
-      const { innerWidth, innerHeight } = window;
+      const rect = hero.getBoundingClientRect();
 
-      const x = (e.clientX / innerWidth - 0.5) * 20;
-      const y = (e.clientY / innerHeight - 0.5) * 20;
+      const x = ((e.clientX - rect.left) / rect.width - 0.5) * 28;
+      const y = ((e.clientY - rect.top) / rect.height - 0.5) * 18;
 
-      hero.style.transform = `
-        scale(1.06)
-        translateX(${x}px)
-        translateY(${y}px)
+      car.style.transform = `
+        scale(1.08)
+        translateX(${22 + x}px)
+        translateY(${-8 + y}px)
       `;
+
+      hero.style.setProperty("--smoke-x", `${x * -0.7}px`);
+      hero.style.setProperty("--smoke-y", `${y * -0.7}px`);
+      hero.style.setProperty("--shine-x", `${e.clientX - rect.left}px`);
+      hero.style.setProperty("--shine-y", `${e.clientY - rect.top}px`);
     };
 
-    window.addEventListener("mousemove", handleMove);
+    const reset = () => {
+      car.style.transform = "scale(1.06) translateX(22px) translateY(-8px)";
+      hero.style.setProperty("--smoke-x", "0px");
+      hero.style.setProperty("--smoke-y", "0px");
+    };
+
+    hero.addEventListener("mousemove", handleMove);
+    hero.addEventListener("mouseleave", reset);
 
     return () => {
-      window.removeEventListener("mousemove", handleMove);
+      hero.removeEventListener("mousemove", handleMove);
+      hero.removeEventListener("mouseleave", reset);
     };
   }, []);
-  
+
   return (
     <section id="home" className="hero">
       <div className="hero-noise"></div>
