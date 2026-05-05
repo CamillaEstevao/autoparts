@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -40,6 +42,10 @@ select {
   font-family: inherit;
 }
 
+button {
+  cursor: pointer;
+}
+
 .container {
   width: min(1240px, calc(100% - 64px));
   margin: 0 auto;
@@ -48,11 +54,12 @@ select {
 .btn {
   border: none;
   cursor: pointer;
-  border-radius: 12px;
+  border-radius: 999px;
   padding: 15px 22px;
   font-weight: 900;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
   transition: .25s ease;
 }
@@ -60,6 +67,11 @@ select {
 .btn-dark {
   background: #050505;
   color: #fff;
+}
+
+.btn-dark:hover {
+  transform: translateY(-3px);
+  background: #171717;
 }
 
 @media (max-width: 560px) {

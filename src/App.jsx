@@ -20,8 +20,12 @@ import {
   Car,
   Disc3,
   Filter,
-  BatteryCharging
+  BatteryCharging,
+  ArrowRight,
+  BadgeCheck,
+  Sparkles
 } from "lucide-react";
+
 import "./App.css";
 
 const whatsappNumber = "5511999999999";
@@ -34,7 +38,7 @@ const categories = [
   { name: "Acessórios", icon: Car },
   { name: "Elétrica", icon: Zap },
   { name: "Filtros", icon: Filter },
-  { name: "Lataria", icon: Gauge }
+  { name: "Performance", icon: Gauge }
 ];
 
 const products = [
@@ -47,7 +51,7 @@ const products = [
   {
     name: "Disco de Freio Ventilado",
     price: "R$ 129,90",
-    image: "assets/disco-freio.svg",
+    image: "/assets/disco-freio.svg",
     compatible: "Linha Volkswagen e Fiat",
   },
   {
@@ -79,19 +83,26 @@ function waLink(text) {
 function Header() {
   return (
     <header className="header">
+      <div className="topbar">
+        <div className="container topbar-inner">
+          <span>Entrega para todo o Brasil</span>
+          <span>Atendimento especializado via WhatsApp</span>
+          <span>Peças selecionadas com garantia</span>
+        </div>
+      </div>
+
       <div className="container nav">
-        <a className="logo" href="#">
-          <span className="car-line"></span>
+        <a className="logo" href="#home">
           <strong>AUTOPARTS</strong>
           <small>PRIME</small>
         </a>
 
         <nav className="desktop-menu">
           <a href="#home">Home</a>
-          <a href="#produtos">Produtos</a>
           <a href="#categorias">Categorias</a>
+          <a href="#produtos">Produtos</a>
           <a href="#marcas">Marcas</a>
-          <a href="#sobre">Sobre nós</a>
+          <a href="#sobre">Sobre</a>
           <a href="#contato">Contato</a>
         </nav>
 
@@ -104,7 +115,7 @@ function Header() {
           Comprar pelo WhatsApp
         </a>
 
-        <button className="mobile-menu">
+        <button className="mobile-menu" aria-label="Abrir menu">
           <Menu />
         </button>
       </div>
@@ -119,16 +130,16 @@ function Header() {
         </select>
 
         <div className="search-input">
-          <input placeholder="O que você precisa?" />
-          <button>
+          <input placeholder="Digite peça, modelo ou categoria..." />
+          <button aria-label="Buscar">
             <Search size={20} />
           </button>
         </div>
 
         <div className="quick-actions">
-          <span><PackageCheck size={22} /> Meus pedidos</span>
-          <span><Headphones size={22} /> Atendimento</span>
-          <span className="cart"><ShoppingCart size={25} /><b>0</b></span>
+          <span><PackageCheck size={21} /> Pedidos</span>
+          <span><Headphones size={21} /> Suporte</span>
+          <span className="cart"><ShoppingCart size={24} /><b>0</b></span>
         </div>
       </div>
     </header>
@@ -138,29 +149,66 @@ function Header() {
 function Hero() {
   return (
     <section id="home" className="hero">
+      <div className="hero-noise"></div>
+
       <div className="container hero-grid">
         <div className="hero-content">
-          <span className="eyebrow">Peças premium para seu carro</span>
+          <span className="eyebrow">
+            <Sparkles size={15} />
+            Vitrine automotiva premium
+          </span>
+
           <h1>
-            Qualidade para quem entende do <em>assunto.</em>
+            Peças certas para carros que merecem <em>performance.</em>
           </h1>
+
           <p>
-            A melhor vitrine online de autopeças para seu cliente consultar,
-            comparar e comprar direto pelo WhatsApp com atendimento especializado.
+            Consulte autopeças com rapidez, visual moderno e atendimento direto
+            pelo WhatsApp. Uma experiência feita para transmitir confiança desde
+            o primeiro clique.
           </p>
 
-          <div className="hero-benefits">
-            <div><Truck /> Envio para todo o Brasil</div>
-            <div><ShieldCheck /> Peças usadas com garantia</div>
-            <div><Headphones /> Atendimento especializado</div>
+          <div className="hero-actions">
+            <a className="btn btn-primary" href="#produtos">
+              Ver produtos <ArrowRight size={18} />
+            </a>
+
+            <a
+              className="btn btn-glass"
+              href={waLink("Olá, quero ajuda para encontrar uma peça.")}
+              target="_blank"
+            >
+              Falar com especialista
+            </a>
           </div>
 
-          <a className="btn btn-primary" href="#produtos">
-            Ver produtos <ChevronRight size={18} />
-          </a>
+          <div className="hero-benefits">
+            <div>
+              <Truck />
+              <span>Envio nacional</span>
+            </div>
+            <div>
+              <ShieldCheck />
+              <span>Peças com garantia</span>
+            </div>
+            <div>
+              <BadgeCheck />
+              <span>Compra consultiva</span>
+            </div>
+          </div>
         </div>
 
-        <div className="hero-image">
+        <div className="hero-visual">
+          <div className="hero-card floating one">
+            <strong>+500</strong>
+            <span>peças disponíveis</span>
+          </div>
+
+          <div className="hero-card floating two">
+            <strong>24h</strong>
+            <span>resposta rápida</span>
+          </div>
+
           <img src="/assets/carro-premium.png" alt="Carro premium" />
         </div>
       </div>
@@ -170,25 +218,22 @@ function Hero() {
 
 function Categories() {
   return (
-    <section id="categorias" className="categories">
+    <section id="categorias" className="categories section">
       <div className="container">
-        <div className="section-title">
+        <div className="section-header">
           <span>Categorias</span>
-          <h2>Encontre por tipo de peça</h2>
-          <p>Organize sua vitrine de forma clara e profissional.</p>
+          <h2>Encontre a peça ideal com poucos cliques.</h2>
+          <p>Organização visual clara para deixar a vitrine mais profissional e fácil de navegar.</p>
         </div>
 
         <div className="category-grid">
           {categories.map(({ name, icon: Icon }) => (
-            <div className="category-card" key={name}>
-              <Icon size={38} />
+            <a className="category-card" href="#produtos" key={name}>
+              <Icon size={34} />
               <strong>{name}</strong>
-            </div>
+              <small>Ver peças</small>
+            </a>
           ))}
-        </div>
-
-        <div className="center">
-          <button className="btn btn-dark">Ver todas as categorias <ChevronRight size={18} /></button>
         </div>
       </div>
     </section>
@@ -197,35 +242,45 @@ function Categories() {
 
 function Products() {
   return (
-    <section id="produtos" className="products">
+    <section id="produtos" className="products section">
       <div className="container">
-        <div className="section-title">
-          <span>Mais vendidos</span>
-          <h2>Produtos em destaque</h2>
-          <p>Cards pensados para vitrine com venda pelo WhatsApp.</p>
+        <div className="section-header light">
+          <span>Produtos</span>
+          <h2>Destaques da vitrine.</h2>
+          <p>Cards com aparência premium, foco em consulta rápida e venda pelo WhatsApp.</p>
         </div>
 
         <div className="product-grid">
           {products.map((product) => (
             <article className="product-card" key={product.name}>
+              <div className="product-badge">Pronta entrega</div>
+
               <div className="product-img">
                 <img src={product.image} alt={product.name} />
               </div>
+
               <div className="stars">
-                {[1,2,3,4,5].map((i) => <Star key={i} size={15} fill="currentColor" />)}
-                <small>(28 avaliações)</small>
+                {[1, 2, 3, 4, 5].map((i) => (
+                  <Star key={i} size={14} fill="currentColor" />
+                ))}
+                <small>(28)</small>
               </div>
+
               <h3>{product.name}</h3>
               <p>{product.compatible}</p>
-              <strong>{product.price}</strong>
-              <a
-                className="consult-btn"
-                href={waLink(`Olá, quero consultar disponibilidade da peça: ${product.name}`)}
-                target="_blank"
-              >
-                <MessageCircle size={17} />
-                Consultar
-              </a>
+
+              <div className="product-bottom">
+                <strong>{product.price}</strong>
+
+                <a
+                  className="consult-btn"
+                  href={waLink(`Olá, quero consultar disponibilidade da peça: ${product.name}`)}
+                  target="_blank"
+                >
+                  <MessageCircle size={17} />
+                  Consultar
+                </a>
+              </div>
             </article>
           ))}
         </div>
@@ -234,15 +289,39 @@ function Products() {
   );
 }
 
+function PromoBanner() {
+  return (
+    <section className="promo">
+      <div className="container promo-card">
+        <div>
+          <span>linha completa</span>
+          <h2>Freios, suspensão, motor, iluminação e acessórios.</h2>
+          <p>
+            Uma vitrine feita para lojas que querem vender mais com aparência
+            profissional, rápida e confiável.
+          </p>
+          <a className="btn btn-primary" href="#categorias">
+            Explorar categorias <ChevronRight size={18} />
+          </a>
+        </div>
+
+        <img src="/assets/pecas-banner.svg" alt="Peças automotivas" />
+      </div>
+    </section>
+  );
+}
+
 function FeaturedProduct() {
   return (
-    <section className="featured-product">
+    <section className="featured-product section">
       <div className="container detail-grid">
         <div className="detail-gallery">
-          <span className="breadcrumb">Home &gt; Iluminação &gt; Faróis</span>
+          <span className="breadcrumb">Home / Iluminação / Faróis</span>
+
           <div className="main-product-image">
             <img src="/assets/farol.svg" alt="Farol Gol G5" />
           </div>
+
           <div className="thumbs">
             <img src="/assets/farol.svg" alt="Farol miniatura" />
             <img src="/assets/carro-mini.svg" alt="Carro miniatura" />
@@ -253,8 +332,11 @@ function FeaturedProduct() {
         <div className="detail-info">
           <span className="tag">Produto em destaque</span>
           <h2>Farol Gol G5 2009 a 2012</h2>
+
           <div className="stars large">
-            {[1,2,3,4,5].map((i) => <Star key={i} size={17} fill="currentColor" />)}
+            {[1, 2, 3, 4, 5].map((i) => (
+              <Star key={i} size={17} fill="currentColor" />
+            ))}
             <small>(28 avaliações)</small>
           </div>
 
@@ -288,32 +370,19 @@ function FeaturedProduct() {
   );
 }
 
-function PromoBanner() {
-  return (
-    <section className="promo">
-      <div className="container promo-card">
-        <div>
-          <span>Linha completa</span>
-          <h2>Freios, Suspensão, Motor e muito mais!</h2>
-          <p>As melhores marcas e peças para garantir segurança e desempenho para seu veículo.</p>
-          <a className="btn btn-primary" href="#categorias">Ver categorias</a>
-        </div>
-        <img src="/assets/pecas-banner.svg" alt="Peças automotivas" />
-      </div>
-    </section>
-  );
-}
-
 function Brands() {
   return (
-    <section id="marcas" className="brands">
+    <section id="marcas" className="brands section">
       <div className="container">
-        <div className="section-title">
-          <span>Marcas parceiras</span>
-          <h2>As melhores marcas</h2>
+        <div className="section-header">
+          <span>Marcas</span>
+          <h2>Trabalhe com marcas reconhecidas.</h2>
         </div>
+
         <div className="brand-row">
-          {brands.map((brand) => <strong key={brand}>{brand}</strong>)}
+          {brands.map((brand) => (
+            <strong key={brand}>{brand}</strong>
+          ))}
         </div>
       </div>
     </section>
@@ -322,19 +391,31 @@ function Brands() {
 
 function About() {
   return (
-    <section id="sobre" className="about">
+    <section id="sobre" className="about section">
       <div className="container about-grid">
         <div>
-          <span className="eyebrow dark">Sobre nós</span>
-          <h2>Especialistas em peças para todas as marcas.</h2>
+          <span className="eyebrow dark">Sobre a AutoParts Prime</span>
+          <h2>Uma experiência moderna para vender autopeças online.</h2>
           <p>
-            A AutoParts Prime nasceu para oferecer uma experiência moderna,
-            rápida e confiável para lojas de autopeças que querem vender mais
-            pela internet sem complicar o processo.
+            A AutoParts Prime foi criada para transformar uma loja comum em uma
+            vitrine digital profissional, com visual premium, navegação simples
+            e atendimento rápido pelo WhatsApp.
           </p>
-          <a className="btn btn-dark" href="#contato">Saiba mais</a>
+
+          <div className="about-list">
+            <span><ShieldCheck /> Confiança visual para o cliente</span>
+            <span><MessageCircle /> Conversão direta pelo WhatsApp</span>
+            <span><Car /> Layout pensado para o setor automotivo</span>
+          </div>
+
+          <a className="btn btn-dark" href="#contato">
+            Conhecer solução <ChevronRight size={18} />
+          </a>
         </div>
-        <img src="/assets/oficina-premium.svg" alt="Oficina premium" />
+
+        <div className="about-image">
+          <img src="/assets/oficina-premium.svg" alt="Oficina premium" />
+        </div>
       </div>
     </section>
   );
@@ -342,10 +423,10 @@ function About() {
 
 function TrustBar() {
   const items = [
-    { icon: Truck, title: "Entrega rápida", text: "Enviamos para todo o Brasil" },
-    { icon: ShieldCheck, title: "Peças com garantia", text: "Produtos selecionados" },
+    { icon: Truck, title: "Entrega rápida", text: "Envio para todo o Brasil" },
+    { icon: ShieldCheck, title: "Garantia", text: "Produtos selecionados" },
     { icon: Headphones, title: "Atendimento", text: "Suporte especializado" },
-    { icon: BatteryCharging, title: "Compra segura", text: "Venda consultiva por WhatsApp" }
+    { icon: BatteryCharging, title: "Compra segura", text: "Consulta pelo WhatsApp" }
   ];
 
   return (
@@ -365,13 +446,14 @@ function TrustBar() {
 
 function Newsletter() {
   return (
-    <section className="newsletter">
+    <section className="newsletter section">
       <div className="container newsletter-card">
         <div>
           <Mail />
-          <h3>Receba ofertas exclusivas!</h3>
-          <p>Cadastre seu e-mail e fique por dentro das novidades.</p>
+          <h3>Receba ofertas e novidades.</h3>
+          <p>Cadastre seu e-mail e fique por dentro das peças em destaque.</p>
         </div>
+
         <form>
           <input placeholder="Seu melhor e-mail" />
           <button type="button">Cadastrar</button>
@@ -386,12 +468,11 @@ function Footer() {
     <footer id="contato" className="footer">
       <div className="container footer-grid">
         <div>
-          <a className="logo footer-logo" href="#">
-            <span className="car-line"></span>
+          <a className="logo footer-logo" href="#home">
             <strong>AUTOPARTS</strong>
             <small>PRIME</small>
           </a>
-          <p>Qualidade, confiança e o melhor atendimento em peças automotivas.</p>
+          <p>Qualidade, confiança e atendimento premium em peças automotivas.</p>
         </div>
 
         <div>
