@@ -28,6 +28,8 @@ import {
 
 import "./App.css";
 
+import { useEffect } from "react";
+
 const whatsappNumber = "5511999999999";
 
 const categories = [
@@ -147,6 +149,29 @@ function Header() {
 }
 
 function Hero() {
+  useEffect(() => {
+    const hero = document.querySelector(".hero-visual img");
+
+    const handleMove = (e) => {
+      const { innerWidth, innerHeight } = window;
+
+      const x = (e.clientX / innerWidth - 0.5) * 20;
+      const y = (e.clientY / innerHeight - 0.5) * 20;
+
+      hero.style.transform = `
+        scale(1.06)
+        translateX(${x}px)
+        translateY(${y}px)
+      `;
+    };
+
+    window.addEventListener("mousemove", handleMove);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMove);
+    };
+  }, []);
+  
   return (
     <section id="home" className="hero">
       <div className="hero-noise"></div>
