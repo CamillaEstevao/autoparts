@@ -27,6 +27,8 @@ import {
   Sparkles
 } from "lucide-react";
 
+import { FaWhatsapp } from "react-icons/fa";
+
 import "./App.css";
 
 import { useState } from "react";
@@ -604,7 +606,7 @@ export default function App() {
         target="_blank"
         aria-label="WhatsApp"
       >
-        <MessageCircle size={30} />
+       <FaWhatsapp size={34} />
       </a>
     </>
   );
