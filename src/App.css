@@ -372,7 +372,7 @@
 
 .hero-benefits div {
   min-height: 86px;
-  padding: 18px;
+  padding: 7px;
   border-radius: 22px;
   border: 1px solid rgba(255,255,255,.13);
   background: linear-gradient(145deg, rgba(255,255,255,.09), rgba(255,255,255,.025));
@@ -382,7 +382,7 @@
   align-items: center;
   gap: 12px;
   font-size: 13px;
-  font-weight: 900;
+  font-weight: 700;
   color: rgba(255,255,255,.92);
 }
 

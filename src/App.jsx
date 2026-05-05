@@ -271,7 +271,7 @@ function Hero() {
             </div>
             <div>
               <BadgeCheck />
-              <span>Compra consultiva</span>
+              <span>Fazemos Mercado Livre</span>
             </div>
           </div>
         </div>
