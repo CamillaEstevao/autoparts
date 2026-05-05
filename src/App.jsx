@@ -29,6 +29,48 @@ import {
 
 import "./App.css";
 
+import { useState } from "react";
+
+function CustomSelect() {
+  const [open, setOpen] = useState(false);
+  const [selected, setSelected] = useState("Todas as categorias");
+
+  const options = [
+    "Todas as categorias",
+    "Suspensão",
+    "Freios",
+    "Motor",
+    "Iluminação"
+  ];
+
+  return (
+    <div className="custom-select">
+      <div
+        className="select-selected"
+        onClick={() => setOpen(!open)}
+      >
+        {selected}
+      </div>
+
+      {open && (
+        <div className="select-options">
+          {options.map((opt) => (
+            <div
+              key={opt}
+              onClick={() => {
+                setSelected(opt);
+                setOpen(false);
+              }}
+            >
+              {opt}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 const whatsappNumber = "5511999999999";
 
 const categories = [
@@ -122,13 +164,7 @@ function Header() {
       </div>
 
       <div className="container search-bar">
-        <select>
-          <option>Todas as categorias</option>
-          <option>Suspensão</option>
-          <option>Freios</option>
-          <option>Motor</option>
-          <option>Iluminação</option>
-        </select>
+        <CustomSelect />
 
         <div className="search-input">
           <input placeholder="Digite peça, modelo ou categoria..." />
